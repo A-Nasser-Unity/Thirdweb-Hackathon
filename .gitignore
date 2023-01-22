@@ -51,6 +51,12 @@ ExportedObj/
 # Unity3D generated file on crash reports
 sysinfo.txt
 
+/Assets/PlayMaker/
+/Assets/Plugins/PlayMaker
+/Assets/PlayMaker/PlayMaker.meta
+/Assets/net.fabrejean/
+/Assets/PlayMaker Custom Actions/
+
 # Builds
 *.apk
 *.unitypackage
