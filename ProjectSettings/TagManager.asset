@@ -8,6 +8,8 @@ TagManager:
   - EnemyAttack
   - GateDamage
   - GateAttack
+  - NormalAmmoHit
+  - MineDamageArea
   layers:
   - Default
   - TransparentFX
