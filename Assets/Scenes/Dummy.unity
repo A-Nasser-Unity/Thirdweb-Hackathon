@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 1890029506}
   - component: {fileID: 1890029505}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Wait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,15 +519,13 @@ MonoBehaviour:
         colorIndex: 0
       actionData:
         actionNames:
-        - HutongGames.PlayMaker.Actions.IntAdd
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
-        - 
-        actionEnabled: 0101
-        actionIsOpen: 0000
-        actionStartIndex: 0000000003000000
-        actionHashCodes: 603dd90548c01101
+        actionEnabled: 01
+        actionIsOpen: 00
+        actionStartIndex: 00000000
+        actionHashCodes: 48c01101
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -549,19 +547,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: 5
-        fsmIntParams:
-        - useVariable: 1
-          name: GOLD
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 5
+        fsmIntParams: []
         fsmBoolParams: []
         fsmVector2Params: []
         fsmVector3Params: []
@@ -570,21 +556,18 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - FINISHED
-        byteData: 0000
+        byteData: 00
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1000000010000000010000000f0000001700000001000000
+        paramDataType: 0f0000001700000001000000
         paramName:
-        - intVariable
-        - add
-        - everyFrame
         - time
         - finishEvent
         - realTime
-        paramDataPos: 000000000100000000000000000000000000000001000000
-        paramByteDataSize: 000000000000000001000000000000000000000001000000
+        paramDataPos: 000000000000000000000000
+        paramByteDataSize: 000000000000000001000000
     - name: GoBack
       description: 
       colorIndex: 0
@@ -628,7 +611,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0
+          value: 1
         fsmBoolParams:
         - useVariable: 0
           name: 
@@ -800,7 +783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "add 5 gold then return to \nmain menu"
+  m_text: "wait then return to \nmain menu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03d39796683702847a9c9c4686874f33, type: 2}
   m_sharedMaterial: {fileID: -2607273171789376842, guid: 03d39796683702847a9c9c4686874f33, type: 2}

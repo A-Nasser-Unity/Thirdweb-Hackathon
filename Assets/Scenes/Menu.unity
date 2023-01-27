@@ -5725,7 +5725,7 @@ MonoBehaviour:
         customNames:
         - 
         actionEnabled: 01
-        actionIsOpen: 01
+        actionIsOpen: 00
         actionStartIndex: 00000000
         actionHashCodes: 6bd51b01
         unityObjectParams: []
@@ -5749,7 +5749,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 1
+          value: 2
         fsmBoolParams:
         - useVariable: 0
           name: 
@@ -10138,12 +10138,12 @@ GameObject:
   - component: {fileID: 1603113370}
   - component: {fileID: 1603113369}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SetMouseCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1603113369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10159,17 +10159,17 @@ MonoBehaviour:
   fsm:
     dataVersion: 2
     usedInTemplate: {fileID: 0}
-    name: FSM
-    startState: State 1
+    name: SetMouseCursor
+    startState: SetMouseCursor
     states:
-    - name: State 1
+    - name: SetMouseCursor
       description: 
       colorIndex: 0
       position:
         serializedVersion: 2
         x: 50
         y: 100
-        width: 100
+        width: 129
         height: 16
       isBreakpoint: 0
       isSequence: 0
@@ -10179,7 +10179,7 @@ MonoBehaviour:
         actionNames:
         - HutongGames.PlayMaker.Actions.SetMouseCursor
         customNames:
-        - 
+        - Set Mouse Cursor
         actionEnabled: 01
         actionIsOpen: 01
         actionStartIndex: 00000000
