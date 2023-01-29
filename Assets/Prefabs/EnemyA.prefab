@@ -1391,16 +1391,18 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.CreateObject
+        - HutongGames.PlayMaker.Actions.PoolerSpawn
         - HutongGames.PlayMaker.Actions.Comment
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         - 
         - 
-        actionEnabled: 010101
-        actionIsOpen: 000000
-        actionStartIndex: 000000000600000007000000
-        actionHashCodes: 6053230178c5300148c01101
+        - 
+        actionEnabled: 00010101
+        actionIsOpen: 00000000
+        actionStartIndex: 00000000060000000b0000000c000000
+        actionHashCodes: 605323010dc4b10178c5300148c01101
         unityObjectParams: []
         fsmGameObjectParams:
         - useVariable: 0
@@ -1427,6 +1429,18 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: {fileID: 0}
+        - useVariable: 1
+          name: Self
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
         fsmOwnerDefaultParams: []
         animationCurveParams: []
         functionCallParams: []
@@ -1434,7 +1448,13 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: EnemyAttack
         fsmObjectParams: []
         fsmVarParams: []
         fsmArrayParams: []
@@ -1462,6 +1482,18 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: {x: 0, y: 0, z: 0}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {x: 0, y: 1, z: 0}
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {x: 0, y: 0, z: 0}
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
@@ -1473,10 +1505,15 @@ MonoBehaviour:
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1300000013000000130000001c0000001c00000013000000030000000f0000001700000001000000
+        paramDataType: 1300000013000000130000001c0000001c0000001300000012000000130000001c0000001c00000013000000030000000f0000001700000001000000
         paramName:
         - gameObject
         - parent
+        - spawnPoint
+        - position
+        - rotation
+        - storeObject
+        - NameOfThePool
         - spawnPoint
         - position
         - rotation
@@ -1485,8 +1522,8 @@ MonoBehaviour:
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000010000000200000000000000010000000300000000000000000000000100000000000000
-        paramByteDataSize: 00000000000000000000000000000000000000000000000000000000000000000000000001000000
+        paramDataPos: 000000000100000002000000000000000100000003000000000000000400000002000000030000000500000000000000000000000100000000000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000
     - name: FirstWait
       description: 
       colorIndex: 0
@@ -1853,15 +1890,15 @@ MonoBehaviour:
     dataVersion: 2
     usedInTemplate: {fileID: 0}
     name: Health
-    startState: Trigger
+    startState: ResetHealth
     states:
     - name: Trigger
       description: 
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 64
-        y: 128
+        x: 96
+        y: 224
         width: 100
         height: 64
       isBreakpoint: 0
@@ -2053,8 +2090,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 288
-        y: 64
+        x: 320
+        y: 160
         width: 111
         height: 48
       isBreakpoint: 0
@@ -2210,8 +2247,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 288
-        y: 272
+        x: 320
+        y: 368
         width: 100
         height: 16
       isBreakpoint: 0
@@ -2221,14 +2258,14 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.SendEvent
-        - HutongGames.PlayMaker.Actions.DestroySelf
+        - HutongGames.PlayMaker.Actions.PoolerDestroySelf
         customNames:
         - 
         - 
         actionEnabled: 0101
-        actionIsOpen: 0000
+        actionIsOpen: 0001
         actionStartIndex: 0000000004000000
-        actionHashCodes: 5e69bb04230cc800
+        actionHashCodes: 5e69bb0400000000
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -2282,26 +2319,8 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: 0
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
         fsmIntParams: []
-        fsmBoolParams:
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
+        fsmBoolParams: []
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
@@ -2314,24 +2333,21 @@ MonoBehaviour:
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1f000000170000000f000000010000000f0000001100000011000000
+        paramDataType: 1f000000170000000f00000001000000
         paramName:
         - eventTarget
         - sendEvent
         - delay
         - everyFrame
-        - delay
-        - realTime
-        - detachChildren
-        paramDataPos: 00000000000000000000000000000000010000000000000001000000
-        paramByteDataSize: 00000000000000000000000001000000000000000000000000000000
+        paramDataPos: 00000000000000000000000000000000
+        paramByteDataSize: 00000000000000000000000001000000
     - name: GetHitByNormalAmmo
       description: 
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 256
-        y: 144
+        x: 288
+        y: 240
         width: 163
         height: 48
       isBreakpoint: 0
@@ -2482,6 +2498,84 @@ MonoBehaviour:
         - realTime
         paramDataPos: 000000000100000000000000010000000200000003000000000000000100000002000000020000000300000000000000040000000000000004000000000000000500000003000000
         paramByteDataSize: 000000000000000001000000010000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001000000
+    - name: ResetHealth
+      description: Must do this in pooler?????
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 146.5
+        height: 32
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions:
+      - fsmEvent:
+          name: FINISHED
+          isSystemEvent: 1
+          isGlobal: 0
+        toState: Trigger
+        linkStyle: 0
+        linkConstraint: 1
+        linkTarget: 0
+        colorIndex: 0
+      actionData:
+        actionNames:
+        - HutongGames.PlayMaker.Actions.SetIntValue
+        customNames:
+        - 
+        actionEnabled: 01
+        actionIsOpen: 00
+        actionStartIndex: 00000000
+        actionHashCodes: 603dd905
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams:
+        - useVariable: 1
+          name: Health
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 10
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 10
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 00
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 100000001000000001000000
+        paramName:
+        - intVariable
+        - intValue
+        - everyFrame
+        paramDataPos: 000000000100000000000000
+        paramByteDataSize: 000000000000000001000000
     events:
     - name: Yes
       isSystemEvent: 0
@@ -2500,6 +2594,9 @@ MonoBehaviour:
       isGlobal: 0
     - name: Three
       isSystemEvent: 0
+      isGlobal: 0
+    - name: FINISHED
+      isSystemEvent: 1
       isGlobal: 0
     globalTransitions: []
     variables:

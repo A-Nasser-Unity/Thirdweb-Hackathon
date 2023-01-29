@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2189013844271090210}
-  - component: {fileID: 2189013844271090211}
+  - component: {fileID: 3255505743754623138}
   - component: {fileID: 2189013844271090208}
-  - component: {fileID: 2189013844271090209}
+  - component: {fileID: 679194245135725326}
   - component: {fileID: 2189013844271090238}
   m_Layer: 0
   m_Name: MineCollider
@@ -29,19 +29,19 @@ Transform:
   m_GameObject: {fileID: 2189013844271090239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 0.2, z: 0.5}
+  m_LocalScale: {x: 2, y: 0.2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2189013844271090211
+--- !u!33 &3255505743754623138
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2189013844271090239}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2189013844271090208
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96bfb4f1ec4c4344aa000f92e77e329e, type: 2}
+  - {fileID: 2100000, guid: 7b6f75d9d616d1e45a1b452fef129c34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,8 +83,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2189013844271090209
-BoxCollider:
+--- !u!135 &679194245135725326
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 3
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &2189013844271090238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,16 +228,20 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.CreateObject
+        - HutongGames.PlayMaker.Actions.PoolerSpawn
         - HutongGames.PlayMaker.Actions.CreateObject
-        - HutongGames.PlayMaker.Actions.DestroySelf
+        - HutongGames.PlayMaker.Actions.PoolerSpawn
+        - HutongGames.PlayMaker.Actions.PoolerDestroySelf
         customNames:
         - 
         - 
         - 
-        actionEnabled: 010101
-        actionIsOpen: 000000
-        actionStartIndex: 00000000060000000c000000
-        actionHashCodes: 6053230160532301230cc800
+        - 
+        - 
+        actionEnabled: 0001000101
+        actionIsOpen: 0000000001
+        actionStartIndex: 00000000060000000b0000001100000016000000
+        actionHashCodes: 605323010dc4b101605323010dc4b10100000000
         unityObjectParams: []
         fsmGameObjectParams:
         - useVariable: 0
@@ -247,6 +251,18 @@ MonoBehaviour:
           networkSync: 0
           value: {fileID: 6249824932938921153, guid: 9d363b2321baea34081e0c1ec8776f8a, type: 3}
         - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
+          name: Owner
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
           name: 
           tooltip: 
           showInInspector: 0
@@ -288,6 +304,18 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: {fileID: 0}
+        - useVariable: 1
+          name: Owner
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {fileID: 0}
         fsmOwnerDefaultParams: []
         animationCurveParams: []
         functionCallParams: []
@@ -295,34 +323,52 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: MineDamageArea
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Explosion
         fsmObjectParams: []
         fsmVarParams: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams:
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
+        fsmFloatParams: []
         fsmIntParams: []
-        fsmBoolParams:
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
+        fsmBoolParams: []
         fsmVector2Params: []
         fsmVector3Params:
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {x: 0, y: 0, z: 0}
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {x: 0, y: 0, z: 0}
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {x: 0, y: 0, z: 0}
+        - useVariable: 1
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: {x: 0, y: 0, z: 0}
         - useVariable: 1
           name: 
           tooltip: 
@@ -356,7 +402,7 @@ MonoBehaviour:
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1300000013000000130000001c0000001c000000130000001300000013000000130000001c0000001c000000130000000f0000001100000011000000
+        paramDataType: 1300000013000000130000001c0000001c0000001300000012000000130000001c0000001c000000130000001300000013000000130000001c0000001c0000001300000012000000130000001c0000001c00000013000000
         paramName:
         - gameObject
         - parent
@@ -364,17 +410,24 @@ MonoBehaviour:
         - position
         - rotation
         - storeObject
+        - NameOfThePool
+        - spawnPoint
+        - position
+        - rotation
+        - storeObject
         - gameObject
         - parent
         - spawnPoint
         - position
         - rotation
         - storeObject
-        - delay
-        - realTime
-        - detachChildren
-        paramDataPos: 000000000100000002000000000000000100000003000000040000000500000006000000020000000300000007000000000000000000000001000000
-        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+        - NameOfThePool
+        - spawnPoint
+        - position
+        - rotation
+        - storeObject
+        paramDataPos: 0000000001000000020000000000000001000000030000000000000004000000020000000300000005000000060000000700000008000000040000000500000009000000010000000a00000006000000070000000b000000
+        paramByteDataSize: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     events:
     - name: Yes
       isSystemEvent: 0

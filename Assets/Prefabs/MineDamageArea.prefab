@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6249824932938921181}
   - component: {fileID: 6249824932938921182}
   - component: {fileID: 6249824932938921183}
-  - component: {fileID: 6249824932938921152}
+  - component: {fileID: 8231457672137558808}
   m_Layer: 0
   m_Name: MineDamageArea
   m_TagString: MineDamageArea
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6249824932938921153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 0.2, z: 8}
+  m_LocalScale: {x: 10, y: 0.2, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6249824932938921152
+--- !u!114 &8231457672137558808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,10 +111,10 @@ MonoBehaviour:
   fsm:
     dataVersion: 2
     usedInTemplate: {fileID: 0}
-    name: Explode
-    startState: Explode
+    name: PoolerDestroy
+    startState: Wait
     states:
-    - name: Explode
+    - name: Wait
       description: 
       colorIndex: 0
       position:
@@ -122,20 +122,29 @@ MonoBehaviour:
         x: 50
         y: 100
         width: 100
-        height: 16
+        height: 32
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
-      transitions: []
+      transitions:
+      - fsmEvent:
+          name: FINISHED
+          isSystemEvent: 1
+          isGlobal: 0
+        toState: PoolerDestroy
+        linkStyle: 0
+        linkConstraint: 0
+        linkTarget: 0
+        colorIndex: 0
       actionData:
         actionNames:
-        - HutongGames.PlayMaker.Actions.DestroySelf
+        - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         actionEnabled: 01
         actionIsOpen: 01
         actionStartIndex: 00000000
-        actionHashCodes: 230cc800
+        actionHashCodes: 48c01101
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -156,21 +165,67 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 1
+          value: 2
         fsmIntParams: []
-        fsmBoolParams:
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams:
+        - FINISHED
+        byteData: 00
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 0f0000001700000001000000
+        paramName:
+        - time
+        - finishEvent
+        - realTime
+        paramDataPos: 000000000000000000000000
+        paramByteDataSize: 000000000000000001000000
+    - name: PoolerDestroy
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 114
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames:
+        - HutongGames.PlayMaker.Actions.PoolerDestroySelf
+        customNames:
+        - Pooler Destroy Self
+        actionEnabled: 01
+        actionIsOpen: 00
+        actionStartIndex: 00000000
+        actionHashCodes: 00000000
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
@@ -182,14 +237,14 @@ MonoBehaviour:
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 0f0000001100000011000000
-        paramName:
-        - delay
-        - realTime
-        - detachChildren
-        paramDataPos: 000000000000000001000000
-        paramByteDataSize: 000000000000000000000000
-    events: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
+    events:
+    - name: FINISHED
+      isSystemEvent: 1
+      isGlobal: 0
     globalTransitions: []
     variables:
       floatVariables: []
