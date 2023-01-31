@@ -10,6 +10,8 @@ TagManager:
   - GateAttack
   - NormalAmmoHit
   - MineDamageArea
+  - thirdweb
+  - GameOverCollider
   layers:
   - Default
   - TransparentFX
