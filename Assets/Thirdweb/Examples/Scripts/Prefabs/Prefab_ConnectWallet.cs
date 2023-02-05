@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Thirdweb;
 using System;
@@ -44,6 +45,7 @@ public class Prefab_ConnectWallet : MonoBehaviour
     public GameObject connectedDropdown;
     public TMP_Text balanceText;
     public TMP_Text walletAddressText;
+    public TMP_Text goldTokenBalance;
     public Image walletImage;
     public TMP_Text currentNetworkText;
     public Image currentNetworkImage;
@@ -93,6 +95,30 @@ public class Prefab_ConnectWallet : MonoBehaviour
         networkDropdown.SetActive(false);
     }
 
+    public async void setGoldBalance()
+    {
+        goldTokenBalance.text = await getGoldBalance();
+    }
+
+    // get Gold Token Balance
+
+    public async Task<string> getGoldBalance()
+    {
+        var bal = await GetTokenDrop().ERC20.Balance();
+        return bal.displayValue;
+    }
+
+    public async void giveGoldBalance(string amount)
+    {
+        await GetTokenDrop().ERC20.Claim("25");
+        setGoldBalance();
+    }
+
+    private Contract GetTokenDrop()
+    {
+        return ThirdwebManager.Instance.SDK.GetContract("0xDcf4E5f969c69F54Ef761c7A4AD21315F1281AA6");
+    }
+
     // Connecting
 
     public async void OnConnect(Wallet _wallet)
@@ -124,6 +150,9 @@ public class Prefab_ConnectWallet : MonoBehaviour
             CurrencyValue nativeBalance = await ThirdwebManager.Instance.SDK.wallet.GetBalance();
             balanceText.text = $"{nativeBalance.value.ToEth()} {nativeBalance.symbol}";
             walletAddressText.text = address.ShortenAddress();
+
+            setGoldBalance();
+
             currentNetworkText.text = ThirdwebManager.Instance.chainIdentifiers[_chain];
             currentNetworkImage.sprite = networkSprites.Find(x => x.chain == _chain).sprite;
             connectButton.SetActive(false);
