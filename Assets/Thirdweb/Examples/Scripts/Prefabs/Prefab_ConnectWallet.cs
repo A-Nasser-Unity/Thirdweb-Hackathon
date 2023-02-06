@@ -110,7 +110,7 @@ public class Prefab_ConnectWallet : MonoBehaviour
 
     public async void giveGoldBalance(string amount)
     {
-        await GetTokenDrop().ERC20.Claim("25");
+        await GetTokenDrop().ERC20.Claim(amount);
         setGoldBalance();
     }
 
