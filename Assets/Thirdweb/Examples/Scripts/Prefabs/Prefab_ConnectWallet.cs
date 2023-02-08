@@ -5,6 +5,7 @@ using Thirdweb;
 using System;
 using TMPro;
 using UnityEngine.UI;
+using PlayMaker;
 
 public enum Wallet
 {
@@ -31,6 +32,10 @@ public struct NetworkSprite
 
 public class Prefab_ConnectWallet : MonoBehaviour
 {
+
+    [Header("PLAYMAKER")]
+    public PlayMakerFSM myFsm;
+
     [Header("SETTINGS")]
     public List<Wallet> supportedWallets = new List<Wallet> { Wallet.MetaMask, Wallet.CoinbaseWallet, Wallet.WalletConnect };
     public bool supportSwitchingNetwork = false;
@@ -119,6 +124,31 @@ public class Prefab_ConnectWallet : MonoBehaviour
         return ThirdwebManager.Instance.SDK.GetContract("0xDcf4E5f969c69F54Ef761c7A4AD21315F1281AA6");
     }
 
+    public async Task<bool> ownSkins(string tokenId)
+    {
+        // First, check to see if the you own the NFT
+        var owned = await GetEdition().ERC1155.GetOwned();
+
+        // if owned contains a token with the same ID as the listing, then you own it
+        bool ownsNft = owned.Exists(nft => nft.metadata.id == tokenId);
+
+        myFsm.FsmVariables.GetFsmBool("PLAYERHAVESKIN1").Value = ownsNft;
+
+        return ownsNft;
+
+    }
+
+    private Contract GetEdition()
+    {
+        return ThirdwebManager.Instance.SDK.GetContract("0xF21331109Bc1CC89cF2841D70E1349F05047408B");
+    }
+
+    private Marketplace GetMarketplace()
+    {
+        return ThirdwebManager.Instance.SDK.GetContract("0xe54e380E4Eeab4FD34CB8cBcD285613e2a84f0C2")
+            .marketplace;
+    }
+
     // Connecting
 
     public async void OnConnect(Wallet _wallet)
@@ -152,6 +182,7 @@ public class Prefab_ConnectWallet : MonoBehaviour
             walletAddressText.text = address.ShortenAddress();
 
             setGoldBalance();
+            ownSkins("0");
 
             currentNetworkText.text = ThirdwebManager.Instance.chainIdentifiers[_chain];
             currentNetworkImage.sprite = networkSprites.Find(x => x.chain == _chain).sprite;
