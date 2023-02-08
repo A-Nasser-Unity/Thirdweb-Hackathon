@@ -132,10 +132,10 @@ public class Prefab_ConnectWallet : MonoBehaviour
         // if owned contains a token with the same ID as the listing, then you own it
         bool ownsNft = owned.Exists(nft => nft.metadata.id == tokenId);
 
-        myFsm.FsmVariables.GetFsmBool("PLAYERHAVESKIN1").Value = ownsNft;
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("PLAYERHAVESKIN1").Value = ownsNft;
 
         return ownsNft;
-
+        
     }
 
     private Contract GetEdition()
@@ -145,7 +145,8 @@ public class Prefab_ConnectWallet : MonoBehaviour
 
     private Marketplace GetMarketplace()
     {
-        return ThirdwebManager.Instance.SDK.GetContract("0xe54e380E4Eeab4FD34CB8cBcD285613e2a84f0C2")
+        return ThirdwebManager.Instance.SDK
+            .GetContract("0xe54e380E4Eeab4FD34CB8cBcD285613e2a84f0C2")
             .marketplace;
     }
 
