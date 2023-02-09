@@ -51,6 +51,7 @@ public class Prefab_ConnectWallet : MonoBehaviour
     public TMP_Text balanceText;
     public TMP_Text walletAddressText;
     public TMP_Text goldTokenBalance;
+    public TMP_Text nftSkinPrice;
     public Image walletImage;
     public TMP_Text currentNetworkText;
     public Image currentNetworkImage;
@@ -143,6 +144,37 @@ public class Prefab_ConnectWallet : MonoBehaviour
         return ThirdwebManager.Instance.SDK.GetContract("0xF21331109Bc1CC89cF2841D70E1349F05047408B");
     }
 
+    public async void setNftSkinPrice(string listingId)
+    {
+        nftSkinPrice.text = await getNftSkinPrice(listingId);
+    }
+
+    public async Task<string> getNftSkinPrice(string listingId)
+    {
+        var price = await GetMarketplace().GetListing(listingId);
+        return price.buyoutCurrencyValuePerToken.displayValue;
+    }
+
+    public async void buySkin(string listingId)
+    {
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING").Value = true;
+
+        var result = await GetMarketplace().BuyListing(listingId, 1);
+
+        var isSuccess = result.isSuccessful();
+
+        if (isSuccess)
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful").Value = true;
+        }
+        else
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful").Value = false;
+        }
+
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING").Value = false;
+    }
+
     private Marketplace GetMarketplace()
     {
         return ThirdwebManager.Instance.SDK
@@ -183,6 +215,7 @@ public class Prefab_ConnectWallet : MonoBehaviour
             walletAddressText.text = address.ShortenAddress();
 
             setGoldBalance();
+            setNftSkinPrice("2");
             ownSkins("0");
 
             currentNetworkText.text = ThirdwebManager.Instance.chainIdentifiers[_chain];
