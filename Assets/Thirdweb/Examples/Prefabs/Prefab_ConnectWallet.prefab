@@ -2284,6 +2284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e0ba15cb38b4345825030a6c81d2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myFsm: {fileID: 0}
   supportedWallets: 000000000100000002000000
   supportSwitchingNetwork: 1
   connectButton: {fileID: 1335404547334051784}
@@ -2305,6 +2306,7 @@ MonoBehaviour:
   connectedDropdown: {fileID: 472489313}
   balanceText: {fileID: 1457839850}
   walletAddressText: {fileID: 262581968}
+  goldTokenBalance: {fileID: 0}
   walletImage: {fileID: 1430547140}
   currentNetworkText: {fileID: 270904384543002881}
   currentNetworkImage: {fileID: 1390862793022922592}
