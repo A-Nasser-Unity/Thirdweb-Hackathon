@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 public class Web3 : MonoBehaviour
 {
+    string adminAddress = "0x0de82DCC40B8468639251b089f8b4A4400022e04";
+    public void initializeVariables()
+    {
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING0").Value = true;
+        setGoldBalance();
+        setDiamondBalance();
+        setOwnSkin1();
+        setOwnSkin2();
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING0").Value = false;
+    }
     public async void setGoldBalance()
     {
         PlayMakerGlobals.Instance.Variables.FindFsmFloat("GOLD").Value = await getGoldBalance();
@@ -22,7 +32,19 @@ public class Web3 : MonoBehaviour
     public async void giveGoldBalance(string amount)
     {
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING3").Value = true;
-        await GetGoldTokenDrop().ERC20.Claim(amount);
+        var result = await GetGoldTokenDrop().ERC20.Claim(amount);
+
+        var isSuccess = result.isSuccessful();
+
+        if (isSuccess)
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful7").Value = true;
+        }
+        else
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful7").Value = false;
+        }
+
         setGoldBalance();
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING3").Value = false;
     }
@@ -47,7 +69,19 @@ public class Web3 : MonoBehaviour
     public async void buyDiamondToken(string amount)
     {
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING6").Value = true;
-        await GetDiamondTokenDrop().ERC20.Claim(amount);
+        var result = await GetDiamondTokenDrop().ERC20.Claim(amount);
+
+        var isSuccess = result.isSuccessful();
+
+        if (isSuccess)
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful8").Value = true;
+        }
+        else
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful8").Value = false;
+        }
+
         setDiamondBalance();
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING6").Value = false;
     }
@@ -55,6 +89,45 @@ public class Web3 : MonoBehaviour
     private Contract GetDiamondTokenDrop()
     {
         return ThirdwebManager.Instance.SDK.GetContract("0x27f342e6914733f3D0874156BbDC1016E6C3b2f6");
+    }
+    public async void decreaseGoldToken(string amount)
+    {
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING7").Value = true;
+        var result = await GetGoldTokenDrop().ERC20.Transfer(adminAddress, amount);
+
+        var isSuccess = result.isSuccessful();
+
+        if (isSuccess)
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful5").Value = true;
+        }
+        else
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful5").Value = false;
+        }
+
+        setGoldBalance();
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING7").Value = false;
+    }
+
+    public async void decreaseDiamondToken(string amount)
+    {
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING8").Value = true;
+        var result = await GetDiamondTokenDrop().ERC20.Transfer(adminAddress, amount);
+
+        var isSuccess = result.isSuccessful();
+
+        if (isSuccess)
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful6").Value = true;
+        }
+        else
+        {
+            PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful6").Value = false;
+        }
+
+        setDiamondBalance();
+        PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING8").Value = false;
     }
 
     public async void setOwnSkin1()
@@ -104,6 +177,8 @@ public class Web3 : MonoBehaviour
             PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful").Value = false;
         }
 
+        setOwnSkin1();
+
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING").Value = false;
     }
 
@@ -126,12 +201,14 @@ public class Web3 : MonoBehaviour
             PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful2").Value = false;
         }
 
+        setOwnSkin2();
+
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING2").Value = false;
     }
 
     public async void buySkin1Diamond()
     {
-        string listingId = "0";
+        string listingId = "2";
 
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING4").Value = true;
 
@@ -148,12 +225,14 @@ public class Web3 : MonoBehaviour
             PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful3").Value = false;
         }
 
+        setOwnSkin1();
+
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING4").Value = false;
     }
 
     public async void buySkin2Diamond()
     {
-        string listingId = "1";
+        string listingId = "3";
 
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING5").Value = true;
 
@@ -169,6 +248,8 @@ public class Web3 : MonoBehaviour
         {
             PlayMakerGlobals.Instance.Variables.FindFsmBool("WasTransactionSuccessful4").Value = false;
         }
+
+        setOwnSkin2();
 
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING5").Value = false;
     }
