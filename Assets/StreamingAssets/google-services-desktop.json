@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "914411755679",
+    "firebase_url": "https://readyplayer3server-default-rtdb.firebaseio.com",
+    "project_id": "readyplayer3server",
+    "storage_bucket": "readyplayer3server.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914411755679:android:a64427f6a8b4a7dee9aaaa",
+        "android_client_info": {
+          "package_name": "com.company.App"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "914411755679-3fvcig77j5eqqm70uf0rv9af7f0gbo5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ93dQcWYms09rMRWkukhXgoiH1Vd0d8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "914411755679-3fvcig77j5eqqm70uf0rv9af7f0gbo5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

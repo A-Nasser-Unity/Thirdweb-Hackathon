@@ -1,12 +1,334 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using Thirdweb;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Text;
+
+public class User
+{
+    public string address;
+    public int DIFFICULTY;
+    public int DOUBLEAMMO;
+    public int POPULATION;
+    public int TOWERUPGRADE;
+    public int MINEAMMO;
+    public int WAVES;
+}
 
 public class Web3 : MonoBehaviour
 {
     string adminAddress = "0x0de82DCC40B8468639251b089f8b4A4400022e04";
+    string baseUrl = "https://rp-3-next-mongo.vercel.app/api/";
+    // difficulty
+    public async void getDifficulty()
+    {
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "USERS/" + address;
+        using(var httpClient = new HttpClient())
+        {
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                User user = JsonUtility.FromJson<User>(json);
+                if(user != null)
+                {
+                    int value = user.DIFFICULTY;
+                    PlayMakerGlobals.Instance.Variables.FindFsmInt("DIFFICULTY").Value = value;
+                }
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    public async void updateDifficulty()
+    {
+        int value = PlayMakerGlobals.Instance.Variables.FindFsmInt("DIFFICULTY").Value;
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "DIFFICULTY";
+
+        var data = new Dictionary<string, dynamic>{
+            {"address", address },
+            {"DIFFICULTY",value}
+        };
+        var content = JsonConvert.SerializeObject(data);
+        var contentData = new StringContent(content, Encoding.UTF8, "application/json");
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.PostAsync(url, contentData);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    // double ammo
+    public async void getDoubleAmmo()
+    {
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "USERS/" + address;
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                User user = JsonUtility.FromJson<User>(json);
+                if (user != null)
+                {
+                    int value = user.DOUBLEAMMO;
+                    PlayMakerGlobals.Instance.Variables.FindFsmInt("DOUBLEAMMO").Value = value;
+                }
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    public async void updateDoubleAmmo()
+    {
+        int value = PlayMakerGlobals.Instance.Variables.FindFsmInt("DOUBLEAMMO").Value;
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "DOUBLEAMMO";
+
+        var data = new Dictionary<string, dynamic>{
+            {"address", address },
+            {"DOUBLEAMMO",value}
+        };
+        var content = JsonConvert.SerializeObject(data);
+        var contentData = new StringContent(content, Encoding.UTF8, "application/json");
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.PostAsync(url, contentData);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    // population
+    public async void getPopulation()
+    {
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "USERS/" + address;
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                User user = JsonUtility.FromJson<User>(json);
+                if (user != null)
+                {
+                    int value = user.POPULATION;
+                    PlayMakerGlobals.Instance.Variables.FindFsmInt("POPULATION").Value = value;
+                }
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    public async void updatePopulation()
+    {
+        int value = PlayMakerGlobals.Instance.Variables.FindFsmInt("POPULATION").Value;
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "POPULATION";
+
+        var data = new Dictionary<string, dynamic>{
+            {"address", address },
+            {"POPULATION",value}
+        };
+        var content = JsonConvert.SerializeObject(data);
+        var contentData = new StringContent(content, Encoding.UTF8, "application/json");
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.PostAsync(url, contentData);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    // tower upgrade
+    public async void getTowerUpgrade()
+    {
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "USERS/" + address;
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                User user = JsonUtility.FromJson<User>(json);
+                if (user != null)
+                {
+                    int value = user.TOWERUPGRADE;
+                    PlayMakerGlobals.Instance.Variables.FindFsmInt("TOWERUPGRADE").Value = value;
+                }
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    public async void updateTowerUpgrade()
+    {
+        int value = PlayMakerGlobals.Instance.Variables.FindFsmInt("TOWERUPGRADE").Value;
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "TOWERUPGRADE";
+
+        var data = new Dictionary<string, dynamic>{
+            {"address", address },
+            {"TOWERUPGRADE",value}
+        };
+        var content = JsonConvert.SerializeObject(data);
+        var contentData = new StringContent(content, Encoding.UTF8, "application/json");
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.PostAsync(url, contentData);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    // mine ammo
+    public async void getMineAmmo()
+    {
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "USERS/" + address;
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                User user = JsonUtility.FromJson<User>(json);
+                if (user != null)
+                {
+                    int value = user.MINEAMMO;
+                    PlayMakerGlobals.Instance.Variables.FindFsmInt("MINEAMMO").Value = value;
+                }
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    public async void updateMineAmmo()
+    {
+        int value = PlayMakerGlobals.Instance.Variables.FindFsmInt("MINEAMMO").Value;
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "MINEAMMO";
+
+        var data = new Dictionary<string, dynamic>{
+            {"address", address },
+            {"MINEAMMO",value}
+        };
+        var content = JsonConvert.SerializeObject(data);
+        var contentData = new StringContent(content, Encoding.UTF8, "application/json");
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.PostAsync(url, contentData);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    // Waves
+    public async void getWaves()
+    {
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "USERS/" + address;
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                User user = JsonUtility.FromJson<User>(json);
+                if (user != null)
+                {
+                    int value = user.WAVES;
+                    PlayMakerGlobals.Instance.Variables.FindFsmInt("WAVES").Value = value;
+                }
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
+
+    public async void updateWaves()
+    {
+        int value = PlayMakerGlobals.Instance.Variables.FindFsmInt("WAVES").Value;
+        string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        string url = baseUrl + "WAVES";
+
+        var data = new Dictionary<string, dynamic>{
+            {"address", address },
+            {"WAVES",value}
+        };
+        var content = JsonConvert.SerializeObject(data);
+        var contentData = new StringContent(content, Encoding.UTF8, "application/json");
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.PostAsync(url, contentData);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+            else
+            {
+                print(response.ReasonPhrase);
+            }
+        }
+    }
     public void initializeVariables()
     {
         PlayMakerGlobals.Instance.Variables.FindFsmBool("LOADING0").Value = true;
