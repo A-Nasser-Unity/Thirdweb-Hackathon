@@ -2,7 +2,7 @@
 
 [Try game](https://gateway.ipfscdn.io/ipfs/QmdSTr4jKbxiiResNcVQqptuuVAfzWLyvJMui4mtE8i659)
 
-Howitzer is a tower defense game. Where the player control a Howitzer in middle of a town and try to defend the Gates to prevent the enemies from entering the town by breaking the gates.
+Howitzer is a tower defense game, where the player control a Howitzer in middle of a town and try to defend the Gates to prevent the enemies from entering the town by breaking the gates.
 
 The Gates will auto attack the enemies, but the player can also help them to attack at faster rate by clicking the attack button for every gate.
 
