@@ -9,15 +9,24 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using System.Text;
 
+[System.Serializable]
 public class User
 {
-    public string address;
-    public int DIFFICULTY;
-    public int DOUBLEAMMO;
-    public int POPULATION;
-    public int TOWERUPGRADE;
-    public int MINEAMMO;
-    public int WAVES;
+    public string _id;
+    public string address = "0x";
+    public int DIFFICULTY = 2;
+    public int DOUBLEAMMO = 3;
+    public int POPULATION = 50;
+    public int TOWERUPGRADE = 0;
+    public int MINEAMMO = 3;
+    public int WAVES = 0;
+}
+
+[System.Serializable]
+public class Result
+{
+    public int status;
+    public User data;
 }
 
 public class Web3 : MonoBehaviour
@@ -29,16 +38,17 @@ public class Web3 : MonoBehaviour
     {
         string address = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
         string url = baseUrl + "USERS/" + address;
-        using(var httpClient = new HttpClient())
+
+        using (var httpClient = new HttpClient())
         {
             var response = await httpClient.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 string json = await response.Content.ReadAsStringAsync();
-                User user = JsonUtility.FromJson<User>(json);
-                if(user != null)
+                Result user = JsonUtility.FromJson<Result>(json);
+                if (user.data != null && !user.data.address.Equals("0x"))
                 {
-                    int value = user.DIFFICULTY;
+                    int value = user.data.DIFFICULTY;
                     PlayMakerGlobals.Instance.Variables.FindFsmInt("DIFFICULTY").Value = value;
                 }
             }
@@ -86,10 +96,10 @@ public class Web3 : MonoBehaviour
             if (response.IsSuccessStatusCode)
             {
                 string json = await response.Content.ReadAsStringAsync();
-                User user = JsonUtility.FromJson<User>(json);
-                if (user != null)
+                Result user = JsonUtility.FromJson<Result>(json);
+                if (user.data != null && !user.data.address.Equals("0x"))
                 {
-                    int value = user.DOUBLEAMMO;
+                    int value = user.data.DOUBLEAMMO;
                     PlayMakerGlobals.Instance.Variables.FindFsmInt("DOUBLEAMMO").Value = value;
                 }
             }
@@ -137,10 +147,10 @@ public class Web3 : MonoBehaviour
             if (response.IsSuccessStatusCode)
             {
                 string json = await response.Content.ReadAsStringAsync();
-                User user = JsonUtility.FromJson<User>(json);
-                if (user != null)
+                Result user = JsonUtility.FromJson<Result>(json);
+                if (user.data != null && !user.data.address.Equals("0x"))
                 {
-                    int value = user.POPULATION;
+                    int value = user.data.POPULATION;
                     PlayMakerGlobals.Instance.Variables.FindFsmInt("POPULATION").Value = value;
                 }
             }
@@ -188,10 +198,10 @@ public class Web3 : MonoBehaviour
             if (response.IsSuccessStatusCode)
             {
                 string json = await response.Content.ReadAsStringAsync();
-                User user = JsonUtility.FromJson<User>(json);
-                if (user != null)
+                Result user = JsonUtility.FromJson<Result>(json);
+                if (user.data != null && !user.data.address.Equals("0x"))
                 {
-                    int value = user.TOWERUPGRADE;
+                    int value = user.data.TOWERUPGRADE;
                     PlayMakerGlobals.Instance.Variables.FindFsmInt("TOWERUPGRADE").Value = value;
                 }
             }
@@ -239,10 +249,10 @@ public class Web3 : MonoBehaviour
             if (response.IsSuccessStatusCode)
             {
                 string json = await response.Content.ReadAsStringAsync();
-                User user = JsonUtility.FromJson<User>(json);
-                if (user != null)
+                Result user = JsonUtility.FromJson<Result>(json);
+                if (user.data != null && !user.data.address.Equals("0x"))
                 {
-                    int value = user.MINEAMMO;
+                    int value = user.data.MINEAMMO;
                     PlayMakerGlobals.Instance.Variables.FindFsmInt("MINEAMMO").Value = value;
                 }
             }
@@ -290,10 +300,10 @@ public class Web3 : MonoBehaviour
             if (response.IsSuccessStatusCode)
             {
                 string json = await response.Content.ReadAsStringAsync();
-                User user = JsonUtility.FromJson<User>(json);
-                if (user != null)
+                Result user = JsonUtility.FromJson<Result>(json);
+                if (user.data != null && !user.data.address.Equals("0x"))
                 {
-                    int value = user.WAVES;
+                    int value = user.data.WAVES;
                     PlayMakerGlobals.Instance.Variables.FindFsmInt("WAVES").Value = value;
                 }
             }
@@ -377,7 +387,7 @@ public class Web3 : MonoBehaviour
     }
     public async void setDiamondBalance()
     {
-        PlayMakerGlobals.Instance.Variables.FindFsmFloat("DIAMOND").Value = await getGoldBalance();
+        PlayMakerGlobals.Instance.Variables.FindFsmFloat("DIAMOND").Value = await getDiamondBalance();
     }
 
     public async Task<float> getDiamondBalance()

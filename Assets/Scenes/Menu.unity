@@ -7439,15 +7439,17 @@ MonoBehaviour:
         actionNames:
         - HutongGames.PlayMaker.Actions.ActivateGameObject
         - HutongGames.PlayMaker.Actions.SetIntValue
+        - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.UiSetIsInteractable
         customNames:
         - 
         - 
         - 
-        actionEnabled: 010101
-        actionIsOpen: 000000
-        actionStartIndex: 000000000500000008000000
-        actionHashCodes: b2cf1000603dd905a8a7c802
+        - 
+        actionEnabled: 01010101
+        actionIsOpen: 00000000
+        actionStartIndex: 0000000005000000080000000e000000
+        actionHashCodes: b2cf1000603dd905ca51e900a8a7c802
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -7473,9 +7475,46 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams: []
-        fsmObjectParams: []
-        fsmVarParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: updateTowerUpgrade
+        fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: Web3
+          value: {fileID: 901278092}
+        fsmVarParams:
+        - variableName: 
+          objectType: 
+          useVariable: 0
+          type: -1
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams: []
@@ -7523,12 +7562,13 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams: []
-        byteData: 000000
-        arrayParamSizes: 
-        arrayParamTypes: []
+        byteData: 0000000000
+        arrayParamSizes: 00000000
+        arrayParamTypes:
+        - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1400000011000000110000000100000001000000100000001000000001000000140000001100000011000000
+        paramDataType: 140000001100000011000000010000000100000010000000100000000100000018000000120000000c000000270000000100000001000000140000001100000011000000
         paramName:
         - gameObject
         - activate
@@ -7538,11 +7578,17 @@ MonoBehaviour:
         - intVariable
         - intValue
         - everyFrame
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - everyFrame
+        - manualUI
         - gameObject
         - isInteractable
         - resetOnExit
-        paramDataPos: 0000000000000000010000000000000001000000000000000100000002000000010000000200000003000000
-        paramByteDataSize: 0000000000000000000000000100000001000000000000000000000001000000000000000000000000000000
+        paramDataPos: 0000000000000000010000000000000001000000000000000100000002000000000000000000000000000000000000000300000004000000010000000200000003000000
+        paramByteDataSize: 0000000000000000000000000100000001000000000000000000000001000000000000000000000000000000000000000100000001000000000000000000000000000000
     - name: DontUpgrade
       description: 
       colorIndex: 0
@@ -12383,7 +12429,7 @@ MonoBehaviour:
         - 
         - 
         actionEnabled: 0101
-        actionIsOpen: 0001
+        actionIsOpen: 0101
         actionStartIndex: 0000000003000000
         actionHashCodes: e9f7330448c01101
         unityObjectParams: []
@@ -13267,6 +13313,8 @@ MonoBehaviour:
         - HutongGames.PlayMaker.Actions.IntAdd
         - HutongGames.PlayMaker.Actions.IntAdd
         - HutongGames.PlayMaker.Actions.Comment
+        - HutongGames.PlayMaker.Actions.CallMethod
+        - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.ActivateGameObject
         - HutongGames.PlayMaker.Actions.UiSetIsInteractable
         customNames:
@@ -13275,10 +13323,12 @@ MonoBehaviour:
         - 
         - 
         - 
-        actionEnabled: 0101010101
-        actionIsOpen: 0000000000
-        actionStartIndex: 000000000300000006000000070000000c000000
-        actionHashCodes: 603dd905603dd90578c53001b2cf1000a8a7c802
+        - 
+        - 
+        actionEnabled: 01010101010101
+        actionIsOpen: 00000000000000
+        actionStartIndex: 000000000300000006000000070000000d0000001300000018000000
+        actionHashCodes: 603dd905603dd90578c53001ca51e900ca51e900b2cf1000a8a7c802
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -13304,9 +13354,83 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams: []
-        fsmObjectParams: []
-        fsmVarParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: updateDoubleAmmo
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: updateMineAmmo
+        fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: Web3
+          value: {fileID: 901278092}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: Web3
+          value: {fileID: 901278092}
+        fsmVarParams:
+        - variableName: 
+          objectType: 
+          useVariable: 0
+          type: -1
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: 
+          objectType: 
+          useVariable: 0
+          type: -1
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams: []
@@ -13367,12 +13491,14 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - Double-Click To Edit
-        byteData: 00000000
-        arrayParamSizes: 
-        arrayParamTypes: []
+        byteData: 0000000000000000
+        arrayParamSizes: 0000000000000000
+        arrayParamTypes:
+        - HutongGames.PlayMaker.FsmVar
+        - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 100000001000000001000000100000001000000001000000030000001400000011000000110000000100000001000000140000001100000011000000
+        paramDataType: 1000000010000000010000001000000010000000010000000300000018000000120000000c00000027000000010000000100000018000000120000000c0000002700000001000000010000001400000011000000110000000100000001000000140000001100000011000000
         paramName:
         - intVariable
         - add
@@ -13381,6 +13507,18 @@ MonoBehaviour:
         - add
         - everyFrame
         - comment
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - everyFrame
+        - manualUI
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - everyFrame
+        - manualUI
         - gameObject
         - activate
         - recursive
@@ -13389,8 +13527,8 @@ MonoBehaviour:
         - gameObject
         - isInteractable
         - resetOnExit
-        paramDataPos: 000000000100000000000000020000000300000001000000000000000000000000000000010000000200000003000000010000000200000003000000
-        paramByteDataSize: 000000000000000001000000000000000000000001000000000000000000000000000000000000000100000001000000000000000000000000000000
+        paramDataPos: 000000000100000000000000020000000300000001000000000000000000000000000000000000000000000002000000030000000100000001000000010000000100000004000000050000000000000000000000010000000600000007000000010000000200000003000000
+        paramByteDataSize: 000000000000000001000000000000000000000001000000000000000000000000000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000000000000000000000100000001000000000000000000000000000000
     - name: NoAmmo
       description: 
       colorIndex: 0
@@ -14633,15 +14771,17 @@ MonoBehaviour:
         actionNames:
         - HutongGames.PlayMaker.Actions.ActivateGameObject
         - HutongGames.PlayMaker.Actions.SetIntValue
+        - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.UiSetIsInteractable
         customNames:
         - 
         - 
         - 
-        actionEnabled: 010101
-        actionIsOpen: 000000
-        actionStartIndex: 000000000500000008000000
-        actionHashCodes: b2cf1000603dd905a8a7c802
+        - 
+        actionEnabled: 01010101
+        actionIsOpen: 00000000
+        actionStartIndex: 0000000005000000080000000e000000
+        actionHashCodes: b2cf1000603dd905ca51e900a8a7c802
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -14667,9 +14807,46 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams: []
-        fsmObjectParams: []
-        fsmVarParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: updateTowerUpgrade
+        fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: Web3
+          value: {fileID: 901278092}
+        fsmVarParams:
+        - variableName: 
+          objectType: 
+          useVariable: 0
+          type: -1
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams: []
@@ -14717,12 +14894,13 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams: []
-        byteData: 000000
-        arrayParamSizes: 
-        arrayParamTypes: []
+        byteData: 0000000000
+        arrayParamSizes: 00000000
+        arrayParamTypes:
+        - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1400000011000000110000000100000001000000100000001000000001000000140000001100000011000000
+        paramDataType: 140000001100000011000000010000000100000010000000100000000100000018000000120000000c000000270000000100000001000000140000001100000011000000
         paramName:
         - gameObject
         - activate
@@ -14732,11 +14910,17 @@ MonoBehaviour:
         - intVariable
         - intValue
         - everyFrame
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - everyFrame
+        - manualUI
         - gameObject
         - isInteractable
         - resetOnExit
-        paramDataPos: 0000000000000000010000000000000001000000000000000100000002000000010000000200000003000000
-        paramByteDataSize: 0000000000000000000000000100000001000000000000000000000001000000000000000000000000000000
+        paramDataPos: 0000000000000000010000000000000001000000000000000100000002000000000000000000000000000000000000000300000004000000010000000200000003000000
+        paramByteDataSize: 0000000000000000000000000100000001000000000000000000000001000000000000000000000000000000000000000100000001000000000000000000000000000000
     - name: DontUpgrade
       description: 
       colorIndex: 0
@@ -21447,6 +21631,8 @@ MonoBehaviour:
         - HutongGames.PlayMaker.Actions.IntAdd
         - HutongGames.PlayMaker.Actions.IntAdd
         - HutongGames.PlayMaker.Actions.Comment
+        - HutongGames.PlayMaker.Actions.CallMethod
+        - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.ActivateGameObject
         - HutongGames.PlayMaker.Actions.UiSetIsInteractable
         customNames:
@@ -21455,10 +21641,12 @@ MonoBehaviour:
         - 
         - 
         - 
-        actionEnabled: 0101010101
-        actionIsOpen: 0000000000
-        actionStartIndex: 000000000300000006000000070000000c000000
-        actionHashCodes: 603dd905603dd90578c53001b2cf1000a8a7c802
+        - 
+        - 
+        actionEnabled: 01010101010101
+        actionIsOpen: 00000000000000
+        actionStartIndex: 000000000300000006000000070000000d0000001300000018000000
+        actionHashCodes: 603dd905603dd90578c53001ca51e900ca51e900b2cf1000a8a7c802
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -21484,9 +21672,83 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams: []
-        fsmObjectParams: []
-        fsmVarParams: []
+        fsmStringParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: updateDoubleAmmo
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: updateMineAmmo
+        fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: Web3
+          value: {fileID: 901278092}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: Web3
+          value: {fileID: 901278092}
+        fsmVarParams:
+        - variableName: 
+          objectType: 
+          useVariable: 0
+          type: -1
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: 
+          objectType: 
+          useVariable: 0
+          type: -1
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams: []
@@ -21547,12 +21809,14 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - Double-Click To Edit
-        byteData: 00000000
-        arrayParamSizes: 
-        arrayParamTypes: []
+        byteData: 0000000000000000
+        arrayParamSizes: 0000000000000000
+        arrayParamTypes:
+        - HutongGames.PlayMaker.FsmVar
+        - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 100000001000000001000000100000001000000001000000030000001400000011000000110000000100000001000000140000001100000011000000
+        paramDataType: 1000000010000000010000001000000010000000010000000300000018000000120000000c00000027000000010000000100000018000000120000000c0000002700000001000000010000001400000011000000110000000100000001000000140000001100000011000000
         paramName:
         - intVariable
         - add
@@ -21561,6 +21825,18 @@ MonoBehaviour:
         - add
         - everyFrame
         - comment
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - everyFrame
+        - manualUI
+        - behaviour
+        - methodName
+        - parameters
+        - storeResult
+        - everyFrame
+        - manualUI
         - gameObject
         - activate
         - recursive
@@ -21569,8 +21845,8 @@ MonoBehaviour:
         - gameObject
         - isInteractable
         - resetOnExit
-        paramDataPos: 000000000100000000000000020000000300000001000000000000000000000000000000010000000200000003000000010000000200000003000000
-        paramByteDataSize: 000000000000000001000000000000000000000001000000000000000000000000000000000000000100000001000000000000000000000000000000
+        paramDataPos: 000000000100000000000000020000000300000001000000000000000000000000000000000000000000000002000000030000000100000001000000010000000100000004000000050000000000000000000000010000000600000007000000010000000200000003000000
+        paramByteDataSize: 000000000000000001000000000000000000000001000000000000000000000000000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000000000000000000000100000001000000000000000000000000000000
     - name: NoAmmo
       description: 
       colorIndex: 0
